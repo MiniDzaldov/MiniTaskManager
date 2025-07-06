@@ -122,4 +122,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load saved tasks after DOM loads
     loadTasks();
+    // ✨ Enable drag & drop with SortableJS
+    new Sortable(taskList, {
+        animation: 150,
+        onEnd: () => {
+            const reorderedTasks = [];
+            taskList.querySelectorAll('li').forEach(li => {
+                const id = li.dataset.id;
+                const task = tasks.find(t => t.id === id);
+                if (task) reorderedTasks.push(task);
+            });
+            tasks = reorderedTasks;
+            saveTasks();
+        }
+    });
 });
+

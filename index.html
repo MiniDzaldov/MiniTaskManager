@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -13,10 +14,6 @@
             <input type="text" id="new-task" placeholder="Enter a new task">
             <button id="add-task">Add Task</button>
         </div>
-          <!-- New search container -->
-    <!-- <div id="search-container">
-        <input type="text" id="search-task" placeholder="Search tasks">
-    </div> -->
     <div class="search-wrapper">
         <span class="search-icon">&#128269;</span>
         <input type="text" id="search-task" placeholder="Search tasks">
