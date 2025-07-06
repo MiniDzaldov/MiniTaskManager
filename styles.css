@@ -1,52 +1,50 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background: linear-gradient(to bottom,#41bddd, #496d91);
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+    color: #2c3e50;
     box-sizing: border-box;
+    transition: background 0.5s ease;
 }
 
 #app {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #dee2e6;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-#task-input {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-#task-list {
-    list-style-type: none;
-    padding: 0;
-}
+/* Other styles remain same... */
 
 #task-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #dee2e6;
     border-radius: 3px;
     margin-bottom: 5px;
     background-color: #fff;
+    color: #2c3e50; /* Ensure task text color is consistent */
 }
 
-/* Style for icon buttons */
 #task-list li button {
     background: none;
     border: none;
     cursor: pointer;
     font-size: 16px;
     margin-left: 10px;
+    color: #007bff;
 }
 
 #task-list li button:hover {
-    color: #007BFF;
+    color: #0056b3;
 }
 
 /* Modal styles */
@@ -68,6 +66,7 @@ body {
   border-radius: 4px;
   width: 300px;
   text-align: center;
+  color: #2c3e50; /* Modal text color */
 }
 
 .modal-buttons {
