@@ -33,6 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const taskItem = document.createElement('li');
         taskItem.dataset.id = task.id;
 
+        // ✨ Drag icon (☰)
+        const dragHandle = document.createElement('span');
+        dragHandle.className = 'drag-handle';
+        dragHandle.innerHTML = '&#8801;';
+
         const taskTextSpan = document.createElement('span');
         taskTextSpan.textContent = task.text;
 
@@ -62,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buttonContainer.appendChild(editButton);
         buttonContainer.appendChild(deleteButton);
 
+        taskItem.appendChild(dragHandle);
         taskItem.appendChild(taskTextSpan);
         taskItem.appendChild(buttonContainer);
         taskList.appendChild(taskItem);
@@ -122,4 +128,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load saved tasks after DOM loads
     loadTasks();
+    // ✨ Enable drag & drop with SortableJS
+    new Sortable(taskList, {
+        animation: 150,
+        onEnd: () => {
+            const reorderedTasks = [];
+            taskList.querySelectorAll('li').forEach(li => {
+                const id = li.dataset.id;
+                const task = tasks.find(t => t.id === id);
+                if (task) reorderedTasks.push(task);
+            });
+            tasks = reorderedTasks;
+            saveTasks();
+        }
+    });
 });
+
