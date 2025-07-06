@@ -34,7 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const deleteButton = document.createElement('button');
             deleteButton.innerHTML = '&#128465;';
             deleteButton.addEventListener('click', () => {
-                taskList.removeChild(taskItem);
+                if (window.confirm('Are you sure you want to delete this task?')) {
+                    taskList.removeChild(taskItem);
+                }
             });
 
             buttonContainer.appendChild(editButton);
