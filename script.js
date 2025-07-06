@@ -7,14 +7,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const taskText = taskInput.value.trim();
         if (taskText) {
             const taskItem = document.createElement('li');
-            taskItem.textContent = taskText;
+
+            const taskTextSpan = document.createElement('span');
+            taskTextSpan.textContent = taskText;
+
+            const editButton = document.createElement('button');
+            editButton.innerHTML = '&#9998;'; // Edit icon (Unicode pencil)
+            editButton.addEventListener('click', () => {
+                const newTaskText = prompt('Edit your task:', taskTextSpan.textContent);
+                if (newTaskText !== null) {
+                    taskTextSpan.textContent = newTaskText.trim();
+                }
+            });
 
             const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Delete';
+            deleteButton.innerHTML = '&#128465;'; // Delete icon (Unicode trash can)
             deleteButton.addEventListener('click', () => {
                 taskList.removeChild(taskItem);
             });
 
+            taskItem.appendChild(taskTextSpan);
+            taskItem.appendChild(editButton);
             taskItem.appendChild(deleteButton);
             taskList.appendChild(taskItem);
 
