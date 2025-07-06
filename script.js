@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskInput = document.getElementById('new-task');
     const addTaskButton = document.getElementById('add-task');
     const taskList = document.getElementById('task-list');
+    const searchInput = document.getElementById('search-task');
 
     // Modal elements
     const editModal = document.getElementById('edit-modal');
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create a task element and append to DOM
     function addTaskToDOM(task) {
         const taskItem = document.createElement('li');
-        taskItem.dataset.id = task.id; // store unique id
+        taskItem.dataset.id = task.id;
 
         const taskTextSpan = document.createElement('span');
         taskTextSpan.textContent = task.text;
@@ -76,6 +77,16 @@ document.addEventListener('DOMContentLoaded', () => {
             addTaskToDOM(task);
             taskInput.value = '';
         }
+    });
+
+    // Search tasks: filter visible tasks based on search query
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        const taskItems = taskList.getElementsByTagName('li');
+        Array.from(taskItems).forEach(taskItem => {
+            const taskText = taskItem.querySelector('span').textContent.toLowerCase();
+            taskItem.style.display = taskText.includes(query) ? '' : 'none';
+        });
     });
 
     // Save changes from the modal (edit task)
