@@ -90,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const query = searchInput.value.toLowerCase();
         const taskItems = taskList.getElementsByTagName('li');
         Array.from(taskItems).forEach(taskItem => {
-            const taskText = taskItem.querySelector('span').textContent.toLowerCase();
+            const spans = taskItem.getElementsByTagName('span');
+            const taskText = spans[1]?.textContent.toLowerCase() || '';
             taskItem.style.display = taskText.includes(query) ? '' : 'none';
         });
     });
